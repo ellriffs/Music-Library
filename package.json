@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "node utils/create-database.js test",
+    "prestart": "node utils/create-database.js",
     "start": "nodemon -r dotenv/config index.js",
+    "pretest": "node utils/create-database.js test",
     "test": "mocha tests/**/*.js --exit --recursive --timeout 60000 --file ./tests/test-setup.js",
     "posttest": "node utils/drop-database.js"
   },

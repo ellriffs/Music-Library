@@ -23,11 +23,11 @@
 
         
         const db = await mysql.createConnection({
-        host: DB_HOST,
-        user: DB_USER,
-        password: DB_PASSWORD,
-        port: DB_PORT,
-        });
+            host: DB_HOST,
+            user: DB_USER,
+            password: DB_PASSWORD,
+            port: DB_PORT,
+            });
 
         
         await db.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
@@ -36,15 +36,15 @@
         id INT PRIMARY KEY auto_increment,
         name VARCHAR(25),
         genre VARCHAR(25)
-)`);
+        )`);
 
-await db.query(`CREATE TABLE IF NOT EXISTS Album (
-    id INT PRIMARY KEY auto_increment,
-    name VARCHAR(25),
-    year INT(4),
-    artistId INT,
-    CONSTRAINT id_fk FOREIGN KEY (artistId) REFERENCES Artist(id) ON DELETE CASCADE
-)`);
+        await db.query(`CREATE TABLE IF NOT EXISTS Album (
+            id INT PRIMARY KEY auto_increment,
+            name VARCHAR(60),
+            year INT(4),
+            artistId INT,
+            CONSTRAINT id_fk FOREIGN KEY (artistId) REFERENCES Artist(id) ON DELETE CASCADE
+        )`);
         db.close();
 
     } catch (err) {
